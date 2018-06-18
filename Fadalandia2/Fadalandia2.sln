@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{D4C5E6BA-0C69-45D5-B733-992D45404C2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuFada", "MenuFada\MenuFada.csproj", "{4E903521-1A3E-4BEA-9A9A-351E0EA5D07B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4C5E6BA-0C69-45D5-B733-992D45404C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4C5E6BA-0C69-45D5-B733-992D45404C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4C5E6BA-0C69-45D5-B733-992D45404C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4C5E6BA-0C69-45D5-B733-992D45404C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E903521-1A3E-4BEA-9A9A-351E0EA5D07B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E903521-1A3E-4BEA-9A9A-351E0EA5D07B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E903521-1A3E-4BEA-9A9A-351E0EA5D07B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E903521-1A3E-4BEA-9A9A-351E0EA5D07B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
