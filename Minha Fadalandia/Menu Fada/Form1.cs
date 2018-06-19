@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MenuFada
+namespace Menu_Fada
 {
     public partial class Form1 : Form
     {
@@ -20,45 +20,29 @@ namespace MenuFada
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCadastrar_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnCadastroRapido_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 2;
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btncadastrar1_Click(object sender, EventArgs e)
         {
-            LimparCampos();
-        }
 
-        private void LimparCampos()
-        {
-            txtNome.Text = "";
-            txtFamilia.Text = "";
-            txtCorAsa.Text = "";
-            txtTamanhoAsa.Text = "";
-            txtElemento.Text = "";
-            txtIdade.Text = "";
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
             try
             {
-                Fadalandia fadinha = new Fadalandia(txtNome.Text, txtFamilia.Text, txtCorAsa.Text);
+                Fadalandia fadinha = new Fadalandia(txtNome.Text, txtFamilia.Text, txtElemento.Text)
                 {
-                    fadinha.Nome = txtNome.Text;
-                    fadinha.CorAsa = txtCorAsa.Text;
-                    fadinha.Familia = txtFamilia.Text;
-                    fadinha.TamanhoAsa = Convert.ToInt32(txtTamanhoAsa.Text);
-                    fadinha.Idade = Convert.ToInt32(txtIdade.Text);
+              
+                    CorAsa = txtCorAsa.Text,
+                    TamanhoAsa = Convert.ToInt32(txtTamanhoAsa.Text),
+                    Idade = Convert.ToInt32(txtIdade.Text)
                 };
-                if(nomeAntigo == "")
+                if (nomeAntigo == "")
                 {
                     fadas.Add(fadinha);
                     AdicionarFadaATabela(fadinha);
@@ -68,7 +52,7 @@ namespace MenuFada
                     int Linha = fadas.FindIndex(x => x.Nome == nomeAntigo);
                     fadas[Linha] = fadinha;
                     EditarFadaNaTabela(fadinha, Linha);
-                    MessageBox.Show("Alterado com sucesso");
+                    MessageBox.Show("Cadastrada com sucesso");
                 }
                 LimparCampos();
                 tabControl1.SelectedIndex = 0;
@@ -110,10 +94,25 @@ namespace MenuFada
                     fadas.RemoveAt(i);
                 }
             }
-            
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+            Dispose();
+        }
+
+        private void LimparCampos()
+        {
+            txtNome.Text = "";
+            txtFamilia.Text = "";
+            txtCorAsa.Text = "";
+            txtTamanhoAsa.Text = "";
+            txtIdade.Text = "";
+            txtElemento.Text = "";
+        }
+
+        private void btnApagar_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
@@ -137,37 +136,64 @@ namespace MenuFada
                 }
             }
             dataGridView1.Rows.RemoveAt(linhaSelecionada);
-
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
-            LimparCampos();
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Cadastre uma fadinha!");
+                tabControl1.SelectedIndex = 1;
+                return;
+            }
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Selecione um arquivo para editar");
+                return;
+            }
+            int linhaSelecionada = dataGridView1.CurrentRow.Index;
+            string nome = dataGridView1.Rows[linhaSelecionada].Cells[0].Value.ToString();
+            foreach (Fadalandia fada in fadas)
+            {
+                if (fada.Nome == nome)
+                {
+                    txtNome.Text = fada.Nome;
+                    txtFamilia.Text = fada.Familia;
+                    txtCorAsa.Text = fada.CorAsa;
+                    txtTamanhoAsa.Text = Convert.ToString(fada.TamanhoAsa);
+                    txtElemento.Text = fada.Elemento;
+                    nomeAntigo = fada.Nome;
+                    txtIdade.Text = Convert.ToString(fada.Idade);
+                    tabControl1.SelectedIndex = 1;
+                    break;
+                }
+
+            }
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                Fadalandia fadinha = new Fadalandia(txtNome.Text, txtFamilia.Text, txtCorAsa.Text);
+                 Fadalandia fada = new Fadalandia(txtNome.Text);
                 {
-                    fadinha.Nome = txtNome.Text;
-                    fadinha.CorAsa = txtCorAsa.Text;
-                    fadinha.Familia = txtFamilia.Text;
-                    fadinha.TamanhoAsa = Convert.ToInt32(txtTamanhoAsa.Text);
-                    fadinha.Idade = Convert.ToInt32(txtIdade.Text);
+                    fada.Nome = txtNome1.Text;
+                    fada.Familia = txtFamilia1.Text;
+                    fada.TamanhoAsa = Convert.ToInt32(txtTamanhoAsa1.Text);
+                    fada.Elemento = txtElemento1.Text;
                 };
-                if(nomeAntigo == "")
+                if (nomeAntigo == "")
                 {
-                    fadas.Add(fadinha);
-                    AdicionarFadaATabela(fadinha);
+                    fadas.Add(fada);
+                    AdicionarFadasATabela(fada);
                 }
                 else
                 {
-                    int Linha = fadas.FindIndex(x => x.Nome == nomeAntigo);
-                    fadas[Linha] = fadinha;
-                    EditarFadaNaTabela(fadinha, Linha);
-                    MessageBox.Show("Alterado com sucesso");
+                    int linha = fadas.FindIndex(x => x.Nome == nomeAntigo);
+                    fadas[linha] = fada;
+                    EditarFadaNaTabela(fada, linha);
+                    MessageBox.Show("Cadastrada com secesso");
+                    nomeAntigo = string.Empty;
                 }
                 LimparCampos();
                 tabControl1.SelectedIndex = 0;
@@ -176,17 +202,20 @@ namespace MenuFada
             {
                 MessageBox.Show(e1.Message);
             }
-            Fadalandia fada = new Fadalandia(txtNomeR.Text, txtFamiliaR.Text, txtElementoR.Text)
-            {
-
-            };
-        }
         }
 
-       
+        private void AdicionarFadasATabela(Fadalandia fada)
+        {
+            dataGridView1.Rows.Add(new Object[]{
+                fada.Nome, fada.Familia, fada.Elemento, fada.Idade 
+            });
+        }
 
-       
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
-       
+        }
+
+      
     }
-
+}

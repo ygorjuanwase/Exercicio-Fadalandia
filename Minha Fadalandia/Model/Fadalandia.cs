@@ -131,12 +131,18 @@ namespace Model
                 idade = value;
             }
         }
-        public Fadalandia(string nome, string familia, string elemento)
+        public Fadalandia(string Nome, string Familia, string Elemento)
         {
             Nome = nome;
             Familia = familia;
             Elemento = elemento;
+
         }
-        
+        public Fadalandia(string nome)
+        {
+
+            Nome = nome;
+
+        }
     }
 }
