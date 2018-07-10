@@ -44,7 +44,7 @@ namespace Model
                 {
                     throw new Exception("Familia deve ser preenchido");
                 }
-                if (value.Trim().Count() == 6)
+                if (value.Trim().Count() <= 6)
                 {
                     throw new Exception("familia dve conter no mínimo 6 caracters");
                 }
@@ -64,7 +64,7 @@ namespace Model
                 {
                     throw new Exception("Cor da asa deve ser preenchido");
                 }
-                if (value.Trim().Count() == 4)
+                if (value.Trim().Count() <= 4)
                 {
                     throw new Exception("cor da asa deve conter no mínimo 4 caracters");
                 }
