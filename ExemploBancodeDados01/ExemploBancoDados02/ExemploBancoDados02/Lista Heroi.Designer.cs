@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1Raca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1ContaBancaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1Conta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -46,10 +50,6 @@
             this.rbASc = new System.Windows.Forms.RadioButton();
             this.rbDESC = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.Column1nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1Raca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1ContaBancaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1Conta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -68,8 +68,33 @@
             this.dataGridView1.Location = new System.Drawing.Point(-2, 116);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(755, 312);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Column1nome
+            // 
+            this.Column1nome.HeaderText = "id";
+            this.Column1nome.Name = "Column1nome";
+            this.Column1nome.ReadOnly = true;
+            // 
+            // Column1Raca
+            // 
+            this.Column1Raca.HeaderText = "Nome Heroi";
+            this.Column1Raca.Name = "Column1Raca";
+            this.Column1Raca.ReadOnly = true;
+            // 
+            // Column1ContaBancaria
+            // 
+            this.Column1ContaBancaria.HeaderText = "Raça Heroi";
+            this.Column1ContaBancaria.Name = "Column1ContaBancaria";
+            this.Column1ContaBancaria.ReadOnly = true;
+            // 
+            // Column1Conta
+            // 
+            this.Column1Conta.HeaderText = "Conta Bancaria";
+            this.Column1Conta.Name = "Column1Conta";
+            this.Column1Conta.ReadOnly = true;
             // 
             // button1
             // 
@@ -91,6 +116,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Editar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -123,6 +149,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Estatisticas";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label1
             // 
@@ -140,6 +167,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(342, 20);
             this.textBox1.TabIndex = 7;
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // button6
             // 
@@ -184,6 +212,7 @@
             this.rbNome.TabStop = true;
             this.rbNome.Text = "Nome";
             this.rbNome.UseVisualStyleBackColor = true;
+            this.rbNome.CheckedChanged += new System.EventHandler(this.rbNome_CheckedChanged);
             // 
             // rbContabancaria
             // 
@@ -196,6 +225,7 @@
             this.rbContabancaria.TabStop = true;
             this.rbContabancaria.Text = "CB";
             this.rbContabancaria.UseVisualStyleBackColor = true;
+            this.rbContabancaria.CheckedChanged += new System.EventHandler(this.rbContabancaria_CheckedChanged);
             // 
             // rbRaca
             // 
@@ -208,6 +238,7 @@
             this.rbRaca.TabStop = true;
             this.rbRaca.Text = "Raça";
             this.rbRaca.UseVisualStyleBackColor = true;
+            this.rbRaca.CheckedChanged += new System.EventHandler(this.rbRaca_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -231,6 +262,7 @@
             this.rbASc.TabStop = true;
             this.rbASc.Text = "ASC";
             this.rbASc.UseVisualStyleBackColor = true;
+            this.rbASc.CheckedChanged += new System.EventHandler(this.rbASc_CheckedChanged);
             // 
             // rbDESC
             // 
@@ -243,6 +275,7 @@
             this.rbDESC.TabStop = true;
             this.rbDESC.Text = "DESC";
             this.rbDESC.UseVisualStyleBackColor = true;
+            this.rbDESC.CheckedChanged += new System.EventHandler(this.rbDESC_CheckedChanged);
             // 
             // label3
             // 
@@ -253,30 +286,6 @@
             this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 9;
             this.label3.Text = "ordem";
-            // 
-            // Column1nome
-            // 
-            this.Column1nome.HeaderText = "id";
-            this.Column1nome.Name = "Column1nome";
-            this.Column1nome.ReadOnly = true;
-            // 
-            // Column1Raca
-            // 
-            this.Column1Raca.HeaderText = "Nome Heroi";
-            this.Column1Raca.Name = "Column1Raca";
-            this.Column1Raca.ReadOnly = true;
-            // 
-            // Column1ContaBancaria
-            // 
-            this.Column1ContaBancaria.HeaderText = "Raça Heroi";
-            this.Column1ContaBancaria.Name = "Column1ContaBancaria";
-            this.Column1ContaBancaria.ReadOnly = true;
-            // 
-            // Column1Conta
-            // 
-            this.Column1Conta.HeaderText = "Conta Bancaria";
-            this.Column1Conta.Name = "Column1Conta";
-            this.Column1Conta.ReadOnly = true;
             // 
             // Lista_Usuaroi
             // 
@@ -297,6 +306,7 @@
             this.Name = "Lista_Usuaroi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de Herois";
+            this.Activated += new System.EventHandler(this.Lista_Usuaroi_Activated);
             this.Load += new System.EventHandler(this.Lista_Usuaroi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);

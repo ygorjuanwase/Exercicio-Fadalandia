@@ -81,6 +81,53 @@ namespace ExemploBancoDados02
             
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            new EstaticasHerois().ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int linhaSeleconada = dataGridView1.CurrentRow.Index;
+            int codigo = Convert.ToInt32(dataGridView1.Rows[linhaSeleconada].Cells[0].Value.ToString());
+            new Form1(codigo).ShowDialog();
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void rbNome_CheckedChanged(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void rbRaca_CheckedChanged(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void rbContabancaria_CheckedChanged(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void rbASc_CheckedChanged(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void rbDESC_CheckedChanged(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
+        private void Lista_Usuaroi_Activated(object sender, EventArgs e)
+        {
+            AtualizarLista();
+        }
+
        
     }
 }
